@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sorteo Armería El Corto</title>
+  <style>
+    :root{
+      --bg:#070706; --panel:rgba(20,22,16,.72); --panel2:rgba(255,255,255,.08);
+      --line:rgba(255,255,255,.18); --gold:#d5b46a; --sand:#c9b788; --green:#52633f;
+      --text:#f7f1df; --muted:#c9c0a3; --danger:#ff6b4a;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#050504;min-height:100vh;}
+    body::before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.3),rgba(0,0,0,.84)),url('banner.jpg') center/cover no-repeat;filter:blur(5px) saturate(.8);transform:scale(1.04);z-index:-2;}
+    body::after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 10%,rgba(213,180,106,.20),transparent 40%),linear-gradient(180deg,rgba(0,0,0,.1),#050504 86%);z-index:-1;}
+    .wrap{width:min(1180px,92vw);margin:auto}.hero{min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:36px;padding:34px 0 48px}.badge{display:inline-flex;gap:10px;align-items:center;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);backdrop-filter:blur(18px);color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 22px var(--gold)}
+    h1{font-size:clamp(42px,7vw,88px);line-height:.88;margin:22px 0 16px;letter-spacing:-.06em;text-transform:uppercase;text-shadow:0 12px 35px #000}.gold{color:var(--gold)}
+    .lead{font-size:clamp(18px,2vw,23px);line-height:1.45;color:#f0e9d4;max-width:680px}.price{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.chip{padding:14px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(213,180,106,.22),rgba(255,255,255,.06));border:1px solid rgba(213,180,106,.35);font-weight:900;font-size:18px}.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.btn{appearance:none;border:0;border-radius:18px;padding:15px 20px;font-weight:900;cursor:pointer;text-decoration:none;color:#121008;background:var(--gold);box-shadow:0 16px 45px rgba(213,180,106,.25);transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none}.card{border:1px solid var(--line);background:rgba(16,17,13,.58);border-radius:34px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55);backdrop-filter:blur(18px)}.card img{display:block;width:100%;height:520px;object-fit:cover}.card .caption{padding:18px 20px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.section{padding:56px 0}.head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.head h2{font-size:clamp(30px,4vw,54px);line-height:.95;margin:0;letter-spacing:-.04em}.counter{color:var(--muted);font-weight:800}.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:10px}.num{height:62px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:var(--text);font-size:20px;font-weight:950;cursor:pointer;transition:.18s;box-shadow:inset 0 1px rgba(255,255,255,.08)}.num:hover{background:rgba(213,180,106,.22);border-color:rgba(213,180,106,.55);transform:translateY(-2px)}.num.reserved{background:rgba(255,107,74,.14);color:#9f9886;text-decoration:line-through;cursor:not-allowed}.num.selected{background:var(--gold);color:#0b0904}.info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.info .box{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}.box b{display:block;color:var(--text);margin-bottom:6px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.dialog{width:min(560px,100%);border-radius:28px;border:1px solid var(--line);background:rgba(18,18,14,.95);box-shadow:0 30px 120px #000;padding:22px;backdrop-filter:blur(22px)}.dialog h3{font-size:30px;margin:0 0 6px}.dialog p{margin:0 0 18px;color:var(--muted)}label{display:block;font-weight:800;margin:13px 0 7px}input{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--text);border-radius:15px;padding:14px;font-size:16px;outline:none}input:focus{border-color:var(--gold)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.status{margin-top:10px;min-height:24px;color:var(--muted)}.legal{font-size:12px;color:#aaa18b;margin-top:18px;line-height:1.45}.footer{padding:34px 0 54px;color:var(--muted);text-align:center}@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:28px}.card img{height:360px}.grid{grid-template-columns:repeat(5,1fr)}.info{grid-template-columns:1fr}.row{grid-template-columns:1fr}.head{display:block}.num{height:56px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="badge"><span class="dot"></span> Quiniela Nacional Nocturna · 00 al 99</span>
+        <h1>SORTEO <span class="gold">ARMERÍA EL CORTO</span></h1>
+        <p class="lead"><b>Pistola Tisas PX-9 GEN 3 CAL 9 mm.</b><br>Disponible en color arena o verde, a elección del usuario.</p>
+        <div class="price"><div class="chip">1 número $18.000</div><div class="chip">2 números $30.000</div><div class="chip">Sortea por Quiniela Nacional Nocturna</div></div>
+        <div class="cta"><a class="btn" href="#numeros">Elegir número</a><a class="btn secondary" href="#detalle">Ver detalle</a></div>
+      </div>
+      <div class="card"><img src="pistolas.jpg" alt="Pistolas del sorteo"><div class="caption"><b>Tisas PX-9 GEN 3</b><span>Arena o verde</span></div></div>
+    </section>
+
+    <section id="detalle" class="section">
+      <div class="info">
+        <div class="box"><b>Premio</b>Pistola Tisas PX-9 GEN 3 CAL 9 mm.</div>
+        <div class="box"><b>Colores</b>Arena o verde, a elección del usuario.</div>
+        <div class="box"><b>Modalidad</b>Se sortea por Quiniela Nacional Nocturna.</div>
+        <div class="box"><b>Números</b>El juego es del 00 al 99.</div>
+        <div class="box"><b>Ganador</b>Coincide con las dos últimas cifras del primer premio.</div>
+        <div class="box"><b>Reserva</b>Elegí número, cargá tus datos y adjuntá el comprobante.</div>
+      </div>
+      <p class="legal"><b>Importante:</b> El sorteo se realizará tomando como referencia la <b>Quiniela Nacional Nocturna</b>. Resultará ganador el número que coincida con las <b>dos últimas cifras del primer premio</b>, dentro del rango <b>00 al 99</b>. Venta y entrega sujetas a normativa vigente, verificación de identidad y requisitos legales aplicables. Este sitio funciona como formulario de reserva/inscripción y no reemplaza la validación administrativa correspondiente.</p>
+    </section>
+
+    <section id="numeros" class="section">
+      <div class="head"><h2>Elegí tu número</h2><div class="counter">Juego del 00 al 99 · <span id="availableCount">100</span> disponibles</div></div>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+  <footer class="footer">Armería El Corto · Sorteo por Quiniela Nacional Nocturna · 00 al 99</footer>
+
+  <div id="modal" class="modal">
+    <div class="dialog">
+      <h3>Reservar número <span id="modalNumber"></span></h3>
+      <p>Completá los datos para registrar la reserva.</p>
+      <form id="form">
+        <div class="row"><div><label>Nombre y apellido</label><input id="nombre" required autocomplete="name"></div><div><label>Teléfono</label><input id="telefono" required inputmode="tel"></div></div>
+        <div class="row"><div><label>Documento</label><input id="documento" required inputmode="numeric"></div><div><label>Comprobante de pago</label><input id="comprobante" type="file" accept="image/*,.pdf" required></div></div>
+        <div class="legal">Al enviar, el número queda como reservado en Google Sheets si todavía está disponible.</div>
+        <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancelar</button><button class="btn" type="submit">Confirmar reserva</button></div>
+        <div id="status" class="status"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "PEGAR_ACA_URL_DE_GOOGLE_APPS_SCRIPT"; // termina en /exec
+    const grid = document.getElementById('grid');
+    const modal = document.getElementById('modal');
+    const modalNumber = document.getElementById('modalNumber');
+    const statusBox = document.getElementById('status');
+    let reserved = new Set(); let selectedNumber = null;
+
+    function pad(n){ return String(n).padStart(2,'0'); }
+    function render(){
+      grid.innerHTML = '';
+      for(let i=0;i<100;i++){
+        const num = pad(i);
+        const b = document.createElement('button');
+        b.className = 'num' + (reserved.has(num) ? ' reserved' : '');
+        b.textContent = num;
+        b.disabled = reserved.has(num);
+        b.onclick = () => openModal(num);
+        grid.appendChild(b);
+      }
+      document.getElementById('availableCount').textContent = 100 - reserved.size;
+    }
+    async function loadReserved(){
+      try{
+        if(!API_URL.includes('/exec')) { render(); return; }
+        const r = await fetch(API_URL + '?action=list');
+        const data = await r.json();
+        reserved = new Set((data.reserved || []).map(String));
+      }catch(e){ console.warn(e); }
+      render();
+    }
+    function openModal(num){ selectedNumber = num; modalNumber.textContent = num; statusBox.textContent=''; document.getElementById('form').reset(); modal.classList.add('open'); }
+    function closeModal(){ modal.classList.remove('open'); }
+    async function fileToBase64(file){
+      return new Promise((resolve,reject)=>{ const fr=new FileReader(); fr.onload=()=>resolve(fr.result); fr.onerror=reject; fr.readAsDataURL(file); });
+    }
+    document.getElementById('form').addEventListener('submit', async (e)=>{
+      e.preventDefault(); statusBox.textContent = 'Enviando reserva...';
+      try{
+        if(!API_URL.includes('/exec')) throw new Error('Falta configurar API_URL en el index.html');
+        const file = document.getElementById('comprobante').files[0];
+        const payload = {
+          numero: selectedNumber,
+          nombre: document.getElementById('nombre').value.trim(),
+          telefono: document.getElementById('telefono').value.trim(),
+          documento: document.getElementById('documento').value.trim(),
+          comprobanteNombre: file.name,
+          comprobanteTipo: file.type || 'application/octet-stream',
+          comprobanteBase64: await fileToBase64(file)
+        };
+        const r = await fetch(API_URL, { method:'POST', body: JSON.stringify(payload) });
+        const data = await r.json();
+        if(!data.ok) throw new Error(data.error || 'No se pudo reservar');
+        reserved.add(selectedNumber); render(); statusBox.textContent = 'Reserva registrada correctamente.'; setTimeout(closeModal, 900);
+      }catch(err){ statusBox.textContent = 'Error: ' + err.message; }
+    });
+    modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+    loadReserved();
+  </script>
+</body>
+</html>
