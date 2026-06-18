@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -6,123 +6,323 @@
   <title>Sorteo Armería El Corto</title>
   <style>
     :root{
-      --bg:#070706; --panel:rgba(20,22,16,.72); --panel2:rgba(255,255,255,.08);
-      --line:rgba(255,255,255,.18); --gold:#d5b46a; --sand:#c9b788; --green:#52633f;
-      --text:#f7f1df; --muted:#c9c0a3; --danger:#ff6b4a;
+      --bg:#070806;
+      --panel:rgba(19,22,16,.78);
+      --panel2:rgba(37,42,29,.86);
+      --line:rgba(232,219,178,.22);
+      --sand:#d8c38e;
+      --sand2:#a88952;
+      --olive:#566339;
+      --green:#94a36a;
+      --text:#f7f1df;
+      --muted:#c9bea1;
+      --danger:#8b2f22;
+      --ok:#6f833e;
+      --shadow:0 24px 80px rgba(0,0,0,.55);
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#050504;min-height:100vh;}
-    body::before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.82),rgba(0,0,0,.3),rgba(0,0,0,.84)),url('banner.jpg') center/cover no-repeat;filter:blur(5px) saturate(.8);transform:scale(1.04);z-index:-2;}
-    body::after{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 10%,rgba(213,180,106,.20),transparent 40%),linear-gradient(180deg,rgba(0,0,0,.1),#050504 86%);z-index:-1;}
-    .wrap{width:min(1180px,92vw);margin:auto}.hero{min-height:88vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:36px;padding:34px 0 48px}.badge{display:inline-flex;gap:10px;align-items:center;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);backdrop-filter:blur(18px);color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 22px var(--gold)}
-    h1{font-size:clamp(42px,7vw,88px);line-height:.88;margin:22px 0 16px;letter-spacing:-.06em;text-transform:uppercase;text-shadow:0 12px 35px #000}.gold{color:var(--gold)}
-    .lead{font-size:clamp(18px,2vw,23px);line-height:1.45;color:#f0e9d4;max-width:680px}.price{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}.chip{padding:14px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(213,180,106,.22),rgba(255,255,255,.06));border:1px solid rgba(213,180,106,.35);font-weight:900;font-size:18px}.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px}.btn{appearance:none;border:0;border-radius:18px;padding:15px 20px;font-weight:900;cursor:pointer;text-decoration:none;color:#121008;background:var(--gold);box-shadow:0 16px 45px rgba(213,180,106,.25);transition:.2s}.btn:hover{transform:translateY(-2px)}.btn.secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid var(--line);box-shadow:none}.card{border:1px solid var(--line);background:rgba(16,17,13,.58);border-radius:34px;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,.55);backdrop-filter:blur(18px)}.card img{display:block;width:100%;height:520px;object-fit:cover}.card .caption{padding:18px 20px;color:var(--muted);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.section{padding:56px 0}.head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.head h2{font-size:clamp(30px,4vw,54px);line-height:.95;margin:0;letter-spacing:-.04em}.counter{color:var(--muted);font-weight:800}.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:10px}.num{height:62px;border-radius:16px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:var(--text);font-size:20px;font-weight:950;cursor:pointer;transition:.18s;box-shadow:inset 0 1px rgba(255,255,255,.08)}.num:hover{background:rgba(213,180,106,.22);border-color:rgba(213,180,106,.55);transform:translateY(-2px)}.num.reserved{background:rgba(255,107,74,.14);color:#9f9886;text-decoration:line-through;cursor:not-allowed}.num.selected{background:var(--gold);color:#0b0904}.info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}.info .box{padding:18px;border-radius:22px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}.box b{display:block;color:var(--text);margin-bottom:6px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal.open{display:flex}.dialog{width:min(560px,100%);border-radius:28px;border:1px solid var(--line);background:rgba(18,18,14,.95);box-shadow:0 30px 120px #000;padding:22px;backdrop-filter:blur(22px)}.dialog h3{font-size:30px;margin:0 0 6px}.dialog p{margin:0 0 18px;color:var(--muted)}label{display:block;font-weight:800;margin:13px 0 7px}input{width:100%;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--text);border-radius:15px;padding:14px;font-size:16px;outline:none}input:focus{border-color:var(--gold)}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.status{margin-top:10px;min-height:24px;color:var(--muted)}.legal{font-size:12px;color:#aaa18b;margin-top:18px;line-height:1.45}.footer{padding:34px 0 54px;color:var(--muted);text-align:center}@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:28px}.card img{height:360px}.grid{grid-template-columns:repeat(5,1fr)}.info{grid-template-columns:1fr}.row{grid-template-columns:1fr}.head{display:block}.num{height:56px}}
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(180deg, rgba(7,8,6,.78), rgba(7,8,6,.98)),
+        url('logo.jpg') center/cover fixed no-repeat;
+      min-height:100vh;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:radial-gradient(circle at 50% 0%, rgba(216,195,142,.2), transparent 35%), rgba(0,0,0,.38);
+      backdrop-filter:blur(8px) saturate(.8);
+      z-index:-1;
+    }
+
+    .wrap{width:min(1180px, calc(100% - 28px)); margin:0 auto;}
+
+    header{
+      padding:22px 0 12px;
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(18px);
+      background:linear-gradient(180deg, rgba(7,8,6,.88), rgba(7,8,6,.45));
+      border-bottom:1px solid rgba(216,195,142,.12);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:13px; min-width:0;}
+    .brand img{width:58px; height:42px; object-fit:cover; border-radius:12px; border:1px solid var(--line); box-shadow:0 8px 24px rgba(0,0,0,.35)}
+    .brand strong{font-size:15px; letter-spacing:.18em; text-transform:uppercase; display:block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+    .brand span{display:block; color:var(--muted); font-size:12px; margin-top:2px;}
+    .pill{border:1px solid var(--line); color:var(--sand); border-radius:999px; padding:10px 14px; font-size:12px; letter-spacing:.13em; text-transform:uppercase; background:rgba(216,195,142,.08)}
+
+    .hero{padding:38px 0 30px;}
+    .hero-grid{display:grid; grid-template-columns:1.02fr .98fr; gap:26px; align-items:stretch;}
+    .hero-card, .info-card, .numbers-card{
+      border:1px solid var(--line);
+      background:linear-gradient(145deg, rgba(25,29,19,.82), rgba(8,9,7,.82));
+      box-shadow:var(--shadow);
+      border-radius:30px;
+      overflow:hidden;
+    }
+    .hero-card{padding:28px; display:flex; flex-direction:column; justify-content:space-between; min-height:610px; position:relative;}
+    .hero-card:after{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background:linear-gradient(115deg, rgba(216,195,142,.12), transparent 35%, rgba(86,99,57,.16));
+    }
+    .logo-main{width:min(430px, 88%); margin:0 auto 18px; display:block; border-radius:22px; border:1px solid rgba(255,255,255,.18); box-shadow:0 24px 80px rgba(0,0,0,.5)}
+    h1{font-size:clamp(38px, 6vw, 82px); line-height:.9; margin:8px 0 14px; letter-spacing:-.06em; text-transform:uppercase; text-align:center;}
+    .subtitle{text-align:center; color:var(--muted); font-size:clamp(16px,2.2vw,22px); line-height:1.45; margin:0 auto; max-width:690px;}
+    .cta-row{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:24px;}
+    .btn{border:0; cursor:pointer; border-radius:16px; padding:14px 18px; font-weight:800; letter-spacing:.02em; color:#111; background:linear-gradient(135deg, var(--sand), #fff0bc); box-shadow:0 14px 36px rgba(216,195,142,.18); text-decoration:none; display:inline-flex; align-items:center; justify-content:center;}
+    .btn.secondary{color:var(--text); background:rgba(255,255,255,.08); border:1px solid var(--line); box-shadow:none;}
+
+    .photo-card{border-radius:30px; overflow:hidden; min-height:610px; position:relative; border:1px solid var(--line); box-shadow:var(--shadow); background:#000;}
+    .photo-card img{width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.08) saturate(.92);}
+    .photo-card:after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 45%, rgba(0,0,0,.82));}
+    .photo-caption{position:absolute; left:22px; right:22px; bottom:22px; z-index:1; display:grid; gap:10px;}
+    .tag{width:max-content; max-width:100%; border:1px solid var(--line); border-radius:999px; padding:8px 12px; background:rgba(0,0,0,.45); color:var(--sand); font-size:12px; letter-spacing:.12em; text-transform:uppercase;}
+    .photo-caption h2{margin:0; font-size:clamp(26px,4vw,48px); line-height:1; letter-spacing:-.04em;}
+
+    .cards{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:8px 0 26px;}
+    .mini{padding:18px; border-radius:22px; border:1px solid var(--line); background:rgba(216,195,142,.08); min-height:116px;}
+    .mini b{display:block; color:var(--sand); font-size:23px; margin-bottom:6px;}
+    .mini span{color:var(--muted); font-size:14px; line-height:1.35;}
+
+    .info-card{padding:26px; margin-bottom:26px;}
+    .section-title{display:flex; align-items:end; justify-content:space-between; gap:12px; margin-bottom:16px;}
+    .section-title h2{margin:0; font-size:30px; letter-spacing:-.04em;}
+    .section-title p{margin:0; color:var(--muted); font-size:14px;}
+    .rules{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+    .rule{padding:18px; border-radius:20px; background:rgba(0,0,0,.23); border:1px solid rgba(216,195,142,.14); line-height:1.45; color:var(--muted);}
+    .rule strong{color:var(--text);}
+
+    .numbers-card{padding:26px; margin-bottom:46px;}
+    .legend{display:flex; gap:12px; flex-wrap:wrap; margin:10px 0 20px; color:var(--muted); font-size:13px;}
+    .dot{width:10px; height:10px; display:inline-block; border-radius:50%; margin-right:6px; background:var(--ok)}
+    .dot.pending{background:var(--sand2)} .dot.taken{background:var(--danger)}
+    .grid{display:grid; grid-template-columns:repeat(10,1fr); gap:9px;}
+    .num{
+      border:1px solid rgba(216,195,142,.22); color:var(--text); background:linear-gradient(180deg, rgba(111,131,62,.28), rgba(0,0,0,.25));
+      min-height:58px; border-radius:15px; font-size:21px; font-weight:900; cursor:pointer; transition:.18s ease; box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .num:hover{transform:translateY(-2px); border-color:rgba(216,195,142,.55); background:linear-gradient(180deg, rgba(216,195,142,.28), rgba(0,0,0,.3));}
+    .num.pending{background:linear-gradient(180deg, rgba(168,137,82,.45), rgba(0,0,0,.25));}
+    .num.taken{opacity:.52; cursor:not-allowed; background:linear-gradient(180deg, rgba(139,47,34,.45), rgba(0,0,0,.35)); text-decoration:line-through;}
+
+    footer{padding:28px 0 48px; color:var(--muted); text-align:center; font-size:13px;}
+
+    .modal{position:fixed; inset:0; z-index:100; display:none; place-items:center; padding:18px; background:rgba(0,0,0,.74); backdrop-filter:blur(12px);}
+    .modal.open{display:grid;}
+    .modal-card{width:min(560px,100%); border:1px solid var(--line); border-radius:28px; background:linear-gradient(145deg, rgba(29,34,22,.98), rgba(8,9,7,.98)); box-shadow:var(--shadow); padding:24px;}
+    .modal-head{display:flex; justify-content:space-between; align-items:start; gap:16px; margin-bottom:14px;}
+    .modal-head h3{margin:0; font-size:28px; letter-spacing:-.04em;}
+    .close{background:rgba(255,255,255,.08); color:var(--text); border:1px solid var(--line); border-radius:12px; width:42px; height:42px; cursor:pointer; font-size:24px;}
+    form{display:grid; gap:12px;}
+    label{font-size:13px; color:var(--sand); font-weight:700; letter-spacing:.03em;}
+    input{width:100%; margin-top:7px; border-radius:15px; border:1px solid rgba(216,195,142,.2); background:rgba(0,0,0,.34); color:var(--text); padding:14px 14px; outline:none; font-size:16px;}
+    input:focus{border-color:rgba(216,195,142,.7)}
+    .note{font-size:12px; line-height:1.45; color:var(--muted); margin:4px 0 0;}
+
+    @media(max-width:900px){
+      .hero-grid,.rules{grid-template-columns:1fr}
+      .hero-card,.photo-card{min-height:auto}
+      .photo-card{height:430px}
+      .cards{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:repeat(5,1fr)}
+      .nav{align-items:flex-start}.pill{display:none}
+    }
+    @media(max-width:520px){
+      .cards{grid-template-columns:1fr}
+      .grid{gap:7px}.num{min-height:50px;font-size:18px;border-radius:12px}
+      .hero-card,.info-card,.numbers-card{padding:18px;border-radius:24px}
+      .photo-card{height:360px;border-radius:24px}
+      header{position:relative}
+    }
   </style>
 </head>
 <body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img src="logo.jpg" alt="Logo Armería El Corto" />
+        <div><strong>Armería El Corto</strong><span>Patagonia Argentina</span></div>
+      </div>
+      <a class="pill" href="#numeros">Elegí tu número</a>
+    </div>
+  </header>
+
   <main class="wrap">
     <section class="hero">
-      <div>
-        <span class="badge"><span class="dot"></span> Quiniela Nacional Nocturna · 00 al 99</span>
-        <h1>SORTEO <span class="gold">ARMERÍA EL CORTO</span></h1>
-        <p class="lead"><b>Pistola Tisas PX-9 GEN 3 CAL 9 mm.</b><br>Disponible en color arena o verde, a elección del usuario.</p>
-        <div class="price"><div class="chip">1 número $18.000</div><div class="chip">2 números $30.000</div><div class="chip">Sortea por Quiniela Nacional Nocturna</div></div>
-        <div class="cta"><a class="btn" href="#numeros">Elegir número</a><a class="btn secondary" href="#detalle">Ver detalle</a></div>
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div>
+            <img class="logo-main" src="logo.jpg" alt="Armería El Corto" />
+            <h1>Sorteo<br>Armería El Corto</h1>
+            <p class="subtitle">Participá por una <strong>Pistola Tisas PX-9 GEN 3 Cal. 9 mm</strong>. Disponible en color arena o verde, a elección del ganador.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn" href="#numeros">Comprar número</a>
+            <a class="btn secondary" href="#modalidad">Ver modalidad</a>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <img src="pistolas.jpg" alt="Pistolas Tisas PX-9 GEN 3" />
+          <div class="photo-caption">
+            <span class="tag">Premio principal</span>
+            <h2>Tisas PX-9 GEN 3<br>Cal. 9 mm</h2>
+          </div>
+        </div>
       </div>
-      <div class="card"><img src="pistolas.jpg" alt="Pistolas del sorteo"><div class="caption"><b>Tisas PX-9 GEN 3</b><span>Arena o verde</span></div></div>
     </section>
 
-    <section id="detalle" class="section">
-      <div class="info">
-        <div class="box"><b>Premio</b>Pistola Tisas PX-9 GEN 3 CAL 9 mm.</div>
-        <div class="box"><b>Colores</b>Arena o verde, a elección del usuario.</div>
-        <div class="box"><b>Modalidad</b>Se sortea por Quiniela Nacional Nocturna.</div>
-        <div class="box"><b>Números</b>El juego es del 00 al 99.</div>
-        <div class="box"><b>Ganador</b>Coincide con las dos últimas cifras del primer premio.</div>
-        <div class="box"><b>Reserva</b>Elegí número, cargá tus datos y adjuntá el comprobante.</div>
-      </div>
-      <p class="legal"><b>Importante:</b> El sorteo se realizará tomando como referencia la <b>Quiniela Nacional Nocturna</b>. Resultará ganador el número que coincida con las <b>dos últimas cifras del primer premio</b>, dentro del rango <b>00 al 99</b>. Venta y entrega sujetas a normativa vigente, verificación de identidad y requisitos legales aplicables. Este sitio funciona como formulario de reserva/inscripción y no reemplaza la validación administrativa correspondiente.</p>
+    <section class="cards">
+      <div class="mini"><b>$18.000</b><span>Valor de 1 número.</span></div>
+      <div class="mini"><b>$30.000</b><span>Promo por 2 números.</span></div>
+      <div class="mini"><b>00 al 99</b><span>Juego completo de 100 números.</span></div>
+      <div class="mini"><b>Nocturna</b><span>Quiniela Nacional Nocturna.</span></div>
     </section>
 
-    <section id="numeros" class="section">
-      <div class="head"><h2>Elegí tu número</h2><div class="counter">Juego del 00 al 99 · <span id="availableCount">100</span> disponibles</div></div>
-      <div id="grid" class="grid"></div>
+    <section class="info-card" id="modalidad">
+      <div class="section-title">
+        <h2>Modalidad del sorteo</h2>
+        <p>Transparente y fácil de verificar.</p>
+      </div>
+      <div class="rules">
+        <div class="rule"><strong>El sorteo se realizará por Quiniela Nacional Nocturna.</strong><br>Resultará ganador el número que coincida con las dos últimas cifras del primer premio.</div>
+        <div class="rule"><strong>Participan los números del 00 al 99.</strong><br>La reserva queda registrada con nombre, teléfono, documento y comprobante de pago.</div>
+      </div>
+    </section>
+
+    <section class="numbers-card" id="numeros">
+      <div class="section-title">
+        <h2>Elegí tu número</h2>
+        <p>Tocá un casillero para reservar.</p>
+      </div>
+      <div class="legend">
+        <span><i class="dot"></i>Disponible</span>
+        <span><i class="dot pending"></i>Pendiente de validación</span>
+        <span><i class="dot taken"></i>Reservado</span>
+      </div>
+      <div class="grid" id="grid"></div>
     </section>
   </main>
-  <footer class="footer">Armería El Corto · Sorteo por Quiniela Nacional Nocturna · 00 al 99</footer>
 
-  <div id="modal" class="modal">
-    <div class="dialog">
-      <h3>Reservar número <span id="modalNumber"></span></h3>
-      <p>Completá los datos para registrar la reserva.</p>
-      <form id="form">
-        <div class="row"><div><label>Nombre y apellido</label><input id="nombre" required autocomplete="name"></div><div><label>Teléfono</label><input id="telefono" required inputmode="tel"></div></div>
-        <div class="row"><div><label>Documento</label><input id="documento" required inputmode="numeric"></div><div><label>Comprobante de pago</label><input id="comprobante" type="file" accept="image/*,.pdf" required></div></div>
-        <div class="legal">Al enviar, el número queda como reservado en Google Sheets si todavía está disponible.</div>
-        <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">Cancelar</button><button class="btn" type="submit">Confirmar reserva</button></div>
-        <div id="status" class="status"></div>
+  <footer class="wrap">
+    Importante: el ganador se define por las dos últimas cifras del primer premio de la Quiniela Nacional Nocturna. Juego del 00 al 99.
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <h3>Reservar número <span id="selectedNumber">00</span></h3>
+          <p class="note">Completá los datos y adjuntá el comprobante de pago.</p>
+        </div>
+        <button class="close" type="button" onclick="closeModal()">×</button>
+      </div>
+      <form id="reservationForm">
+        <label>Nombre y apellido
+          <input name="nombre" required placeholder="Ej: Juan Pérez" />
+        </label>
+        <label>Teléfono
+          <input name="telefono" required inputmode="tel" placeholder="Ej: 2920 123456" />
+        </label>
+        <label>Documento / DNI
+          <input name="documento" required inputmode="numeric" placeholder="Ej: 30123456" />
+        </label>
+        <label>Comprobante de pago
+          <input name="comprobante" type="file" accept="image/*,.pdf" required />
+        </label>
+        <input type="hidden" name="numero" id="numeroInput" />
+        <button class="btn" type="submit">Enviar reserva</button>
+        <p class="note">Luego conectamos este formulario a Google Sheets mediante Apps Script para guardar reservas y bloquear números automáticamente.</p>
       </form>
     </div>
   </div>
 
   <script>
-    const API_URL = "PEGAR_ACA_URL_DE_GOOGLE_APPS_SCRIPT"; // termina en /exec
+    const API_URL = ''; // Después pegamos acá la URL del Web App de Google Apps Script.
     const grid = document.getElementById('grid');
     const modal = document.getElementById('modal');
-    const modalNumber = document.getElementById('modalNumber');
-    const statusBox = document.getElementById('status');
-    let reserved = new Set(); let selectedNumber = null;
+    const selectedNumber = document.getElementById('selectedNumber');
+    const numeroInput = document.getElementById('numeroInput');
 
-    function pad(n){ return String(n).padStart(2,'0'); }
-    function render(){
+    // Demo local. Después esto se reemplaza por los datos reales de Google Sheets.
+    const reservedNumbers = new Set([]);
+    const pendingNumbers = new Set([]);
+
+    function twoDigits(n){ return String(n).padStart(2,'0'); }
+
+    function renderGrid(){
       grid.innerHTML = '';
       for(let i=0;i<100;i++){
-        const num = pad(i);
-        const b = document.createElement('button');
-        b.className = 'num' + (reserved.has(num) ? ' reserved' : '');
-        b.textContent = num;
-        b.disabled = reserved.has(num);
-        b.onclick = () => openModal(num);
-        grid.appendChild(b);
+        const number = twoDigits(i);
+        const btn = document.createElement('button');
+        btn.className = 'num';
+        btn.textContent = number;
+        btn.type = 'button';
+
+        if(reservedNumbers.has(number)){
+          btn.classList.add('taken');
+          btn.disabled = true;
+          btn.title = 'Reservado';
+        } else if(pendingNumbers.has(number)){
+          btn.classList.add('pending');
+          btn.title = 'Pendiente de validación';
+          btn.onclick = () => openModal(number);
+        } else {
+          btn.onclick = () => openModal(number);
+        }
+        grid.appendChild(btn);
       }
-      document.getElementById('availableCount').textContent = 100 - reserved.size;
     }
-    async function loadReserved(){
-      try{
-        if(!API_URL.includes('/exec')) { render(); return; }
-        const r = await fetch(API_URL + '?action=list');
-        const data = await r.json();
-        reserved = new Set((data.reserved || []).map(String));
-      }catch(e){ console.warn(e); }
-      render();
+
+    function openModal(number){
+      selectedNumber.textContent = number;
+      numeroInput.value = number;
+      modal.classList.add('open');
     }
-    function openModal(num){ selectedNumber = num; modalNumber.textContent = num; statusBox.textContent=''; document.getElementById('form').reset(); modal.classList.add('open'); }
+
     function closeModal(){ modal.classList.remove('open'); }
-    async function fileToBase64(file){
-      return new Promise((resolve,reject)=>{ const fr=new FileReader(); fr.onload=()=>resolve(fr.result); fr.onerror=reject; fr.readAsDataURL(file); });
-    }
-    document.getElementById('form').addEventListener('submit', async (e)=>{
-      e.preventDefault(); statusBox.textContent = 'Enviando reserva...';
-      try{
-        if(!API_URL.includes('/exec')) throw new Error('Falta configurar API_URL en el index.html');
-        const file = document.getElementById('comprobante').files[0];
-        const payload = {
-          numero: selectedNumber,
-          nombre: document.getElementById('nombre').value.trim(),
-          telefono: document.getElementById('telefono').value.trim(),
-          documento: document.getElementById('documento').value.trim(),
-          comprobanteNombre: file.name,
-          comprobanteTipo: file.type || 'application/octet-stream',
-          comprobanteBase64: await fileToBase64(file)
-        };
-        const r = await fetch(API_URL, { method:'POST', body: JSON.stringify(payload) });
-        const data = await r.json();
-        if(!data.ok) throw new Error(data.error || 'No se pudo reservar');
-        reserved.add(selectedNumber); render(); statusBox.textContent = 'Reserva registrada correctamente.'; setTimeout(closeModal, 900);
-      }catch(err){ statusBox.textContent = 'Error: ' + err.message; }
-    });
     modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
-    loadReserved();
+
+    document.getElementById('reservationForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.currentTarget;
+      const number = numeroInput.value;
+
+      if(!API_URL){
+        pendingNumbers.add(number);
+        renderGrid();
+        closeModal();
+        form.reset();
+        alert('Reserva cargada en modo demo. Después la conectamos a Google Sheets.');
+        return;
+      }
+
+      // Versión preparada para Apps Script. Luego ajustamos el backend.
+      const data = new FormData(form);
+      try{
+        const res = await fetch(API_URL, { method:'POST', body:data });
+        if(!res.ok) throw new Error('Error al enviar');
+        pendingNumbers.add(number);
+        renderGrid();
+        closeModal();
+        form.reset();
+        alert('Reserva enviada correctamente.');
+      }catch(err){
+        alert('No se pudo enviar la reserva. Revisá la conexión o la API.');
+      }
+    });
+
+    renderGrid();
   </script>
 </body>
 </html>
