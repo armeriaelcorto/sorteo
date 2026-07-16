@@ -1,3 +1,10 @@
+Biblioteca
+/
+sorteo_carabina_nombre_numero.html
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -285,6 +292,10 @@
       letter-spacing: 0;
     }
 
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
     label {
       display: block;
       color: var(--muted);
@@ -440,19 +451,15 @@
 
       <form id="raffleForm">
         <div class="form-grid">
-          <div>
+          <div class="full-width">
             <label>Nombre y apellido</label>
-            <input id="nombre" type="text" required placeholder="Ej: Juan Pérez" />
-          </div>
-
-          <div>
-            <label>Teléfono</label>
-            <input id="telefono" type="tel" required placeholder="Ej: 2920500483" />
-          </div>
-
-          <div>
-            <label>DNI / Documento</label>
-            <input id="documento" type="text" required placeholder="Ej: 38790399" />
+            <input
+              id="nombre"
+              type="text"
+              required
+              autocomplete="name"
+              placeholder="Ej: Juan Pérez"
+            />
           </div>
         </div>
 
@@ -577,11 +584,9 @@
 
       const numero = formatNumber(selectedNumber);
       const nombre = document.getElementById("nombre").value.trim();
-      const telefono = document.getElementById("telefono").value.trim();
-      const documento = document.getElementById("documento").value.trim();
 
-      if (!nombre || !telefono || !documento) {
-        setMessage("Completá todos los datos.", "error");
+      if (!nombre) {
+        setMessage("Ingresá tu nombre y apellido.", "error");
         return;
       }
 
@@ -591,9 +596,7 @@
 
         const payload = {
           numero: numero,
-          nombre: nombre,
-          telefono: telefono,
-          documento: documento
+          nombre: nombre
         };
 
         const response = await fetch(BACKEND_URL, {
